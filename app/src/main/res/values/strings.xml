@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Inicio Sesion</string>
+    <string name="label_subtitulo_inicio">Inicio Sesión</string>
+    <string name="label_email">Email</string>
+    <string name="input_email">Ingrese Correo Electronico</string>
+    <string name="label_password">Contraseña</string>
+    <string name="button_inicio">Ingresar</string>
+    <string name="link_registrar">Registrate</string>
+    <string name="label_registro">Formulario de Registro</string>
+    <string name="label_nombre">Nombre completo</string>
+    <string name="label_apellidos">Apellidos</string>
+    <string name="label_clave">Contraseña</string>
+    <string name="lnk_inicio_sesion">¿Ya tienes una cuenta?</string>
+    <string name="label_repetir">Repetir contraseña</string>
+
+    <string name="label_subtitulo_reserva">Reservar Cita</string>
+    <string name="label_descripcion">Descripción</string>
+    <string name="label_especialidad">Especialidad</string>
+    <string name="label_tipo">Tipo de Cita</string>
+    <string name="rdb_consulta">Consulta</string>
+    <string name="rdb_examen">Examen</string>
+    <string name="rdb_operacion">Operación</string>
+    <string name="btn_siguiente">Siguiente</string>
+    <string name="label_medico">Médico</string>
+    <string name="label_fecha">Fecha de la cita</string>
+    <string name="label_mensaje">Seleccione un medico y la fecha, para ver su disponibilidad</string>
+    <string name="label_subtitulo">Datos de la cita</string>
+    <string name="label_hora">Hora de la Cita</string>
+    <string name="btn_confirmar">Confirmar</string>
+</resources>

@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_main"
+    android:padding="10dp"
+    tools:context=".CitaActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/blanco"
+        android:text="@string/label_subtitulo_reserva"/>
+
+    <include layout="@layout/card_view_primero"/>
+
+    <include layout="@layout/card_view_segundo"/>
+
+    <include layout="@layout/card_view_tercero"/>
+
+
+
+</LinearLayout>
