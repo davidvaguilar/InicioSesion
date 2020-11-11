@@ -58,22 +58,22 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
                         if( this.etRegistroClave.getText().toString().length() >= 4){
                             if( this.usuario.claveIgual(repetir) ){
 
-                                buscar_usuario();
+                                if( !buscar_usuario() ) {
+                                    if( registrar_usuario() > 0 ) {
 
+                                        /* LIMPIAR CAMPOS  */
+                                        this.etRegistroNombre.setText("");
+                                        this.etRegistroEmail.setText("");
+                                        this.etRegistroClave.setText("");
+                                        this.etRegistroRepetir.setText("");
 
-                                // SI USUARIO YA ESTA REGISTRADO
-                                // Consulta
-
-                                if( registrar_usuario() > 0){
-                                    this.etRegistroNombre.setText("");
-                                    this.etRegistroEmail.setText("");
-                                    this.etRegistroClave.setText("");
-                                    this.etRegistroRepetir.setText("");
-
-                                    Toast.makeText(this, "Registro del usuario correcto", Toast.LENGTH_LONG).show();
-                                    // ELIMINAR este ACTIVIDAD
-                                } else {
-                                    Toast.makeText(this, "Error al guardar en la Base de Datos", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(this, "Registro del usuario correcto", Toast.LENGTH_LONG).show();
+                                        finish();
+                                    } else {
+                                        Toast.makeText(this, "Error al guardar en la Base de Datos", Toast.LENGTH_LONG).show();
+                                    }
+                                } else{
+                                    Toast.makeText(this, "El usuario ya se encuentra registrado", Toast.LENGTH_LONG).show();
                                 }
                             } else {
                                 Toast.makeText(this, "Clave no es correcta", Toast.LENGTH_LONG).show();
@@ -113,16 +113,15 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         SQLiteDatabase baseDatos = base.getWritableDatabase();
 
         Cursor filas = baseDatos.rawQuery(
-                "SELECT COUNT(*) FROM usuarios WHERE email ="+ this.usuario.getEmail(),null
+                "SELECT COUNT(*) FROM usuarios WHERE email ='"+ this.usuario.getEmail()+"';",null
         );
 
-        if( filas.moveToFirst() ){
-            String cantidad = filas.getString(0);
-            Log.i("LOGPRUEBA", cantidad);
-            return true;
+        filas.moveToFirst();
+        int cantidad = filas.getInt(0);
+        if( cantidad > 0 ){
+            return true;     // usuario encontrado
         } else {
-            Log.i("LOGPRUEBA", "NO existen valores igual a "+this.usuario.getEmail());
-            return false;
+            return false;   // No existen usuarios
         }
 
     }
