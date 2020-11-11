@@ -62,7 +62,7 @@
             android:text="@string/button_inicio"/>
 
         <TextView
-            android:id="@+id/tv_registro"
+            android:id="@+id/tvMainRegistro"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

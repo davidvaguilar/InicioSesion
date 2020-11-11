@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CitaActivity"></activity>
+        <activity android:name=".CitaActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".RegistroActivity" />
         <activity android:name=".MainActivity">

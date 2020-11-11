@@ -32,10 +32,10 @@
             android:text="@string/label_nombre" />
 
         <EditText
+            android:id="@+id/etRegistroNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"/>
-
 
         <TextView
             android:layout_width="match_parent"
@@ -45,6 +45,7 @@
             android:text="@string/label_email"/>
 
         <EditText
+            android:id="@+id/etRegistroEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
@@ -58,6 +59,7 @@
             android:text="@string/label_clave"/>
 
         <EditText
+            android:id="@+id/etRegistroClave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
@@ -71,11 +73,13 @@
             android:text="@string/label_repetir"/>
 
         <EditText
+            android:id="@+id/etRegistroRepetir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
 
         <Button
+            android:id="@+id/btRegistroConfirmar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -83,6 +87,7 @@
 
 
         <TextView
+            android:id="@+id/tvLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/blanco"
