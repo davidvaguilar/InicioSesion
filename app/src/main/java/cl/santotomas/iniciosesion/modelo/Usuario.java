@@ -4,7 +4,16 @@ public class Usuario {
     private Integer id;
     private String nombre;
     private String email;
+    private String telefono;
     private String password;
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
     public String getPassword() {
         return password;   // transformar MD5 hash

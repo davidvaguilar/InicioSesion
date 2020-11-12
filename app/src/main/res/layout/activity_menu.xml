@@ -16,6 +16,7 @@
         android:textColor="@color/blanco"/>
 
     <Button
+        android:id="@+id/btMenuPerfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorButton"
@@ -49,6 +50,7 @@
         android:text="Mis Citas"/>
 
     <Button
+        android:id="@+id/btMenuCerrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorButton"
