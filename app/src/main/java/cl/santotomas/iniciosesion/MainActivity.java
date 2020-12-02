@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private boolean validar_usuario(){
-        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this, "administracion1", null, 1);
+        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this, "administracion2", null, 1);
         SQLiteDatabase baseDatos = base.getWritableDatabase();
 
         Cursor filas =baseDatos.rawQuery(

@@ -92,7 +92,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private long registrar_usuario(){
-        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this,"administracion1", null, 1);
+        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this,"administracion2", null, 1);
         SQLiteDatabase baseDatos = base.getWritableDatabase();
 
         ContentValues registro = new ContentValues();
@@ -109,7 +109,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
 
     // Funcion Validar Correo ya ingresado
     private boolean buscar_usuario(){
-        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this,"administracion1", null, 1);
+        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this,"administracion2", null, 1);
         SQLiteDatabase baseDatos = base.getWritableDatabase();
 
         Cursor filas = baseDatos.rawQuery(

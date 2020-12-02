@@ -39,6 +39,7 @@
         android:text="Reservar Cita"/>
 
     <Button
+        android:id="@+id/btMenuLista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorButton"

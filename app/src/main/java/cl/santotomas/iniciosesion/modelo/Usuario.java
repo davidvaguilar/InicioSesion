@@ -1,7 +1,8 @@
 package cl.santotomas.iniciosesion.modelo;
 
+import android.util.Log;
+
 public class Usuario {
-    private Integer id;
     private String nombre;
     private String email;
     private String telefono;
@@ -23,14 +24,6 @@ public class Usuario {
         this.password = password;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -48,7 +41,8 @@ public class Usuario {
     }
 
     public boolean esVacio(){
-        if( this.nombre.isEmpty() && this.email.isEmpty() && this.password.isEmpty() )
+        if( this.nombre.isEmpty()  && this.email.isEmpty() && this.password.isEmpty() )
+
             return true;
         return false;
     }
@@ -76,9 +70,10 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
+                "nombre='" + nombre + '\'' +
                 ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

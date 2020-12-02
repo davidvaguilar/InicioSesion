@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import cl.santotomas.iniciosesion.modelo.Usuario;
 
@@ -31,6 +32,8 @@ public class PerfilActivity extends AppCompatActivity implements View.OnClickLis
 
         this.usuario = new Usuario();
 
+        buscar_usuario("david@gmail.com");   // 1234
+
         this.etActualizarNombre.setText(this.usuario.getNombre());
         this.etActualizarTelefono.setText(this.usuario.getTelefono());
         this.etActualizarClave.setText(this.usuario.getPassword());
@@ -48,46 +51,64 @@ public class PerfilActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private boolean buscar_usuario(){
-        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this,"administracion1", null, 1);
+    private void buscar_usuario(String correo){
+        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this,"administracion2", null, 1);
         SQLiteDatabase baseDatos = base.getWritableDatabase();
 
+String sql = "SELECT nombre, telefono, clave, email FROM usuarios WHERE email ='"+correo+"';";
         Cursor filas = baseDatos.rawQuery(
-                "SELECT nombre, telefono, clave FROM usuarios WHERE email ='david@gmail.com';",null
+                sql,null
         );
-
-        filas.moveToFirst();
-        int cantidad = filas.getInt(0);
-
-        this.usuario.setNombre(filas.getString(0));
-        this.usuario.setTelefono(filas.getString(1));
-        this.usuario.setPassword(filas.getString(2));
-
-        if( cantidad > 0 ){
+        try {
+            filas.moveToFirst();
             this.usuario.setNombre(filas.getString(0));
             this.usuario.setTelefono(filas.getString(1));
             this.usuario.setPassword(filas.getString(2));
-            return true;     // usuario encontrado
-        } else {
-            return false;   // No existen usuarios
+
+            this.usuario.setEmail(filas.getString(3));
+            Log.i("LOGPRUEBA1", this.usuario.toString());
+        } catch(Exception e){
+            Log.i("LOGPRUEBA1", e.getMessage());
         }
+
 
     }
 
-    private boolean actualizar(){
-        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this,"administracion1", null, 1);
+    private void actualizar(){
+        AdminSQLiteOpenHelper base = new AdminSQLiteOpenHelper(this,"administracion2", null, 1);
         SQLiteDatabase baseDatos = base.getWritableDatabase();
 
-        ContentValues registro = new ContentValues();
-        registro.put("nombre", this.usuario.getNombre());
-        registro.put("telefono", this.usuario.getTelefono());
-        registro.put("clave", this.usuario.getPassword());
+        this.usuario.setNombre(this.etActualizarNombre.getText().toString());
+        this.usuario.setTelefono(this.etActualizarTelefono.getText().toString());
+        this.usuario.setPassword(this.etActualizarClave.getText().toString());
 
-        String condicion = "email = "+this.usuario.getEmail();
+        Log.i("LOGPRUEBA", String.valueOf(this.usuario.getNombre().length()));
+        if( !this.usuario.esVacio() ) {
+            if( this.etActualizarClave.getText().toString().length() >= 4) {
 
-        int resultado = baseDatos.update("usuarios", registro, condicion, null);
-        Log.i("LOGPRUEBA" , String.valueOf(resultado));
-        baseDatos.close();
-        return true;
+                ContentValues registro = new ContentValues();
+                registro.put("nombre", this.usuario.getNombre());
+                registro.put("telefono", this.usuario.getTelefono());
+                registro.put("clave", this.usuario.getPassword());
+                String condicion = "email = '" + this.usuario.getEmail() + "'";
+
+                int resultado = baseDatos.update("usuarios", registro, condicion, null);
+
+                Log.i("LOGPRUEBA", String.valueOf(resultado));
+                baseDatos.close();
+
+                if (resultado == 1) {
+                    Toast.makeText(this, "Datos actualizados", Toast.LENGTH_LONG).show();
+                    finish();    // OK
+                }
+            }else {
+                Log.i("LOGPRUEBA", "La cantidad minima de caracteres son 5.");
+                Toast.makeText(this, "La cantidad minima de caracteres son 5.", Toast.LENGTH_LONG).show();
+            }
+            // PORQUE HAY UN ERROR
+        }else {
+            Log.i("LOGPRUEBA", "Todos los campos son obligatorios");
+            Toast.makeText(this, "Todos los campos son obligatorios", Toast.LENGTH_LONG).show();
+        }
     }
 }

@@ -16,9 +16,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
         Button btMenuPerfil = findViewById(R.id.btMenuPerfil);
         Button btMenuCerrar = findViewById(R.id.btMenuCerrar);
+        Button btMenuLista = findViewById(R.id.btMenuLista);
 
         btMenuPerfil.setOnClickListener(this);
         btMenuCerrar.setOnClickListener(this);
+
+        btMenuLista.setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +36,9 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(mainIntent);
                     finish();
                 break;
+            case R.id.btMenuLista:
+                Intent listaIntent =  new Intent( MenuActivity.this, ListaActivity.class );
+                startActivity(listaIntent);
         }
     }
 }
